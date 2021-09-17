@@ -26,13 +26,6 @@
 
         <dependency>
             <groupId>net.sourceforge.eclipsejetty</groupId>
-            <artifactId>eclipse-jetty-starters-jetty6</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sourceforge.eclipsejetty</groupId>
             <artifactId>eclipse-jetty-starters-jetty7</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
@@ -52,6 +45,20 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>net.sourceforge.eclipsejetty</groupId>
+            <artifactId>eclipse-jetty-starters-jetty10</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.eclipsejetty</groupId>
+            <artifactId>eclipse-jetty-starters-jetty11</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>        
+        
         <dependency>
             <groupId>net.sourceforge.eclipsejetty</groupId>
             <artifactId>eclipse-jetty-starters-console</artifactId>
@@ -98,7 +105,6 @@
                         <configuration>
                             <includeArtifactIds>eclipse-jetty-starters-common,
                                 eclipse-jetty-starters-embedded,
-                                eclipse-jetty-starters-jetty6,
                                 eclipse-jetty-starters-jetty7,
                                 eclipse-jetty-starters-jetty8,
                                 eclipse-jetty-starters-jetty9,

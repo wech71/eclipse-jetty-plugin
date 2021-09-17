@@ -9,6 +9,16 @@
 	</properties>
 
 	<body>
+		<release version="5.0.0" date="2021-09-17">
+				<action dev="wech71" type="update" issue="">
+					Upgrade minimum JDK version to 11
+				</action>
+				</action>
+				<action dev="wech71" type="add" issue="">
+					Support for Jetty 10 and Jetty11
+				</action>
+		</release>
+		
 		<release version="5.0.0" date="2019-12-01">
 			<action dev="venushka" type="update" issue="49">
 				Upgrade minimum Eclipse version to Oxygen

@@ -575,7 +575,7 @@ public class JettyLaunchConfigurationAdapter
      */
     public JettyVersionType getVersion() throws CoreException
     {
-        return JettyVersionType.valueOf(getAttribute(true, ATTR_JETTY_VERSION, JettyVersionType.JETTY_EMBEDDED.name()));
+        return JettyVersionType.valueOf(JettyVersionType.class, getAttribute(true, ATTR_JETTY_VERSION, JettyVersionType.JETTY_EMBEDDED.name()));
     }
 
     /**

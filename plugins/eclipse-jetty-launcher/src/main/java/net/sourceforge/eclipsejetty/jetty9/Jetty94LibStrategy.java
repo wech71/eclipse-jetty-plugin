@@ -67,6 +67,7 @@ public class Jetty94LibStrategy extends Jetty8LibStrategy
     {
         dependencies.add(".*/jetty-annotations-.*\\.jar");
         dependencies.add(".*/annotations/.*\\.jar");
+        dependencies.add(".*/jetty-plus-.*\\.jar");
     }
 
     @Override

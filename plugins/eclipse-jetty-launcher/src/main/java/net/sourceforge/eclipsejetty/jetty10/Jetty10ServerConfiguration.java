@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import javax.xml.transform.OutputKeys;
 
+import net.sourceforge.eclipsejetty.jetty.JettyConfigBuilder;
 import net.sourceforge.eclipsejetty.jetty.JettyVersionType;
 import net.sourceforge.eclipsejetty.jetty9.Jetty9ServerConfiguration;
 import net.sourceforge.eclipsejetty.util.DOMBuilder;
@@ -104,5 +105,36 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
         }
         
         return false;
+    }
+    
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see net.sourceforge.eclipsejetty.jetty7.Jetty7ServerConfiguration#buildAnnotations(net.sourceforge.eclipsejetty.jetty.JettyConfigBuilder)
+     */
+    @Override
+    protected void buildAnnotations(JettyConfigBuilder builder)
+    {
+        if (!isAnnotationsEnabled())
+        {
+            return;
+        }
+
+        /*
+        builder.comment("Annotations");
+
+        builder.beginCall(null, "org.eclipse.jetty.webapp.Configuration$ClassList", "setServerDefault");
+        {
+            builder.argRef("Server");
+            builder.beginCall("addBefore");
+            {
+                builder.arg("addBefore", "org.eclipse.jetty.webapp.JettyWebXmlConfiguration");
+                builder.argArray("org.eclipse.jetty.annotations.AnnotationConfiguration");
+            }
+            builder.end();
+        }
+        builder.end();
+        */
     }
 }

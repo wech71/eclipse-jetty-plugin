@@ -237,7 +237,9 @@ public class Jetty11Adapter extends AbstractServerAdapter implements DumpableSer
 
                     if (extraClasspath != null)
                     {
-                        Collections.addAll(classPath, (String[])extraClasspath.stream().map((x) -> x.getURI()).toArray());
+                    	Collections.addAll(classPath, extraClasspath.stream()
+								.map((x) -> x.getURI().toString())
+								.toArray(String[]::new));
                     }
                 }
             }

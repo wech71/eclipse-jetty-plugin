@@ -234,10 +234,12 @@ public class Jetty10Adapter extends AbstractServerAdapter implements DumpableSer
                 else if (handler instanceof WebAppContext)
                 {
                     List<Resource> extraClasspath = ((WebAppContext) handler).getExtraClasspath();
-
+                    
                     if (extraClasspath != null)
                     {
-                        Collections.addAll(classPath, (String[])extraClasspath.stream().map((x) -> x.getURI()).toArray());
+                    	Collections.addAll(classPath, extraClasspath.stream()
+                    										.map((x) -> x.getURI().toString())
+                    										.toArray(String[]::new));
                     }
                 }
             }

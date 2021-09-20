@@ -56,11 +56,11 @@ public class Jetty10LauncherMain extends AbstractJettyLauncherMain
     @Override
     protected void printLogo(PrintStream out)
     {
-        out.println("   ____    ___                   __    __  __         ___");
-        out.println("  / __/___/ (_)__  ___ ___   __ / /__ / /_/ /___ __  / _ \\");
-        out.println(" / _// __/ / / _ \\(_-</ -_) / // / -_) __/ __/ // /  \\_, /");
-        out.println("/___/\\__/_/_/ .__/___/\\__/  \\___/\\__/\\__/\\__/\\_, /  /___/");
-        out.println("           /_/                              /___/");
+        out.println("   ____    ___                   __    __  __            _    ___ ");
+        out.println("  / __/___/ (_)__  ___ ___   __ / /__ / /_/ /___ __     / /  / _ \\");
+        out.println(" / _// __/ / / _ \\(_-</ -_) / // / -_) __/ __/ // /    / /  // //");
+        out.println("/___/\\__/_/_/ .__/___/\\__/  \\___/\\__/\\__/\\__/\\_, /    /_/  /___/");
+        out.println("           /_/                              /___/");        
     }
 
     /**
@@ -84,67 +84,32 @@ public class Jetty10LauncherMain extends AbstractJettyLauncherMain
 		}
 
 		@Override
-		public boolean isContainedIn(Resource r) throws MalformedURLException
-		{
-			// TODO Auto-generated method stub
-			return false;
-		}
+		public boolean isContainedIn(Resource r) throws MalformedURLException  { return false; }
 
 		@Override
-		public void close()
-		{
-			// TODO Auto-generated method stub
-			
-		}
+		public void close() {}
 
 		@Override
-		public boolean exists()
-		{
-			// TODO Auto-generated method stub
-			return false;
-		}
+		public boolean exists() {return false;}
 
 		@Override
-		public boolean isDirectory()
-		{
-			// TODO Auto-generated method stub
-			return false;
-		}
+		public boolean isDirectory() { return false; }
 
 		@Override
-		public long lastModified()
-		{
-			// TODO Auto-generated method stub
-			return 0;
-		}
+		public long lastModified() { return 0; }
 
 		@Override
-		public long length()
-		{
-			// TODO Auto-generated method stub
-			return 0;
-		}
+		public long length() { return -1; }
 
 		@Override
-		public URI getURI()
-		{
-			// TODO Auto-generated method stub
-			return null;
-		}
+		public URI getURI() { return null; }
 
 		@Override
-		public File getFile() throws IOException
-		{
-			// TODO Auto-generated method stub
-			return null;
-		}
-
+		public File getFile() throws IOException  { return null; }
+		
 		@Override
-		public String getName()
-		{
-			// TODO Auto-generated method stub
-			return null;
-		}
+		public String getName() { return null; }
+
 
 		@Override
 		public InputStream getInputStream() throws IOException
@@ -159,28 +124,15 @@ public class Jetty10LauncherMain extends AbstractJettyLauncherMain
 		}
 
 		@Override
-		public boolean delete() throws SecurityException
-		{
-			return false;
-		}
+		public boolean delete() throws SecurityException { return false; }
+		@Override
+		public boolean renameTo(Resource dest) throws SecurityException  { return false; }
 
 		@Override
-		public boolean renameTo(Resource dest) throws SecurityException
-		{
-			return false;
-		}
-
+		public String[] list()  { return null; }
+	
 		@Override
-		public String[] list()
-		{
-			return null;
-		}
-
-		@Override
-		public Resource addPath(String path) throws IOException, MalformedURLException
-		{
-			return null;
-		}
+		public Resource addPath(String path) throws IOException, MalformedURLException  { return null; }
     }
     
     /**

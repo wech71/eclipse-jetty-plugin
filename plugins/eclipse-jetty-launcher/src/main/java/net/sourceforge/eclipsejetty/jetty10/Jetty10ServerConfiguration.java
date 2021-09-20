@@ -13,9 +13,11 @@ package net.sourceforge.eclipsejetty.jetty10;
 
 import java.util.Collection;
 
+import javax.xml.transform.OutputKeys;
+
 import net.sourceforge.eclipsejetty.jetty.JettyVersionType;
-import net.sourceforge.eclipsejetty.jetty7.Jetty7ServerConfiguration;
 import net.sourceforge.eclipsejetty.jetty9.Jetty9ServerConfiguration;
+import net.sourceforge.eclipsejetty.util.DOMBuilder;
 
 public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
 {
@@ -23,6 +25,13 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
     public Jetty10ServerConfiguration()
     {
         super();
+    }
+
+    protected void buildBody(DOMBuilder domBuilder)
+    {
+    	super.buildBody(domBuilder);
+    	
+    	domBuilder.setDoctype("-//Jetty//Configure//EN", "https://www.eclipse.org/jetty/configure_10_0.dtd");
     }
 
     /**

@@ -345,6 +345,17 @@ public class DOMBuilder
             throw new IllegalArgumentException("Could not write transformer result"); //$NON-NLS-1$
         }
     }
+    
+    
+    private String doctypePublic = null;
+    private String doctypeSystem = null;
+    
+    public void setDoctype(String doctypePublic, String doctypeSystem)
+    {
+    	this.doctypePublic= doctypePublic;
+    	this.doctypeSystem= doctypeSystem;
+    }
+    
 
     /**
      * Exports the specified document to the specified stream
@@ -373,6 +384,13 @@ public class DOMBuilder
         }
 
         transformer.setParameter("encoding", "UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
+        
+        if (doctypeSystem !=null && doctypePublic != null)
+        {
+        	transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doctypePublic); // "-//Jetty//Configure//EN");
+        	transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doctypeSystem); // "https://www.eclipse.org/jetty/configure_10_0.dtd");
+        }
+
 
         if (formatted)
         {

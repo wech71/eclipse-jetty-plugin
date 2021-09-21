@@ -1,9 +1,9 @@
  -----
  Eclipse Jetty Integration - Getting started
  -----
- Christian Köberl, Manfred Hantschel
+ Christian Köberl, Manfred Hantschel, wech71
  -----
- December 2013
+ December 2021
 
 FAQ
 
@@ -19,7 +19,7 @@ FAQ
 
  <<When launching, the JVM fails with an java.lang.UnsupportedClassVersionError:>>
  
- You may need another JRE/JDK. Jetty 6 and Jetty 7 run with Java 1.5. Jetty 8 needs at least Java 1.6 and Jetty 9 needs Java 1.7. 
+ You may need another JRE/JDK. Jetty Jetty 7 run with Java 1.5. Jetty 8 needs at least Java 1.6, Jetty 9 needs Java 1.7, Jetty 10 and 11 needs Java 11. 
  
  <<The application fails with an java.lang.ClassNotFoundException:>>
  

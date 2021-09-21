@@ -20,7 +20,7 @@
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/eclipse-jetty/eclipse-jetty-plugin/issues/</url>
+		<url>https://github.com/wech71/eclipse-jetty-plugin/issues/</url>
 	</issueManagement>
 
 	<developers>
@@ -34,6 +34,10 @@
 			<id>thred</id>
 			<name>Manfred Hantschel</name>
 		</developer>
+		<developer>
+			<id>wech71</id>
+			<name>wech</name>
+		</developer>
 	</developers>
 
 	<properties>
@@ -42,10 +46,10 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:https://github.com/eclipse-jetty/eclipse-jetty-plugin.git</connection>
-		<developerConnection>scm:git:https://github.com/eclipse-jetty/eclipse-jetty-plugin.git</developerConnection>
+		<connection>scm:git:https://github.com/wech71/eclipse-jetty-plugin/issues.git</connection>
+		<developerConnection>scm:git:https://github.com/wech71/eclipse-jetty-plugin/issues.git</developerConnection>
 		<tag>HEAD</tag>
-		<url>https://github.com/eclipse-jetty/eclipse-jetty-plugin</url>
+		<url>https://github.com/wech71/eclipse-jetty-plugin/issues</url>
 	</scm>
 
 	<modules>

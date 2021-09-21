@@ -5,16 +5,16 @@
 
 	<properties>
 		<title>Eclipse Jetty Changes</title>
-		<author>Christian Köberl</author>
+		<author>Christian Köberl / wech71</author>
 	</properties>
 
 	<body>
-		<release version="5.0.0" date="2021-09-17">
-				<action dev="wech71" type="update" issue="">
+		<release version="5.1.0" date="2021-09-21">
+				<action dev="wech71" type="update" issue="1">
 					Upgrade minimum JDK version to 11
 				</action>
 				</action>
-				<action dev="wech71" type="add" issue="">
+				<action dev="wech71" type="add" issue="2">
 					Support for Jetty 10 and Jetty11
 				</action>
 		</release>

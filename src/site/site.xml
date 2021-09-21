@@ -16,8 +16,8 @@
 		<head>
 			<meta name="og:title" content="Eclipse Jetty Plugin" />
 			<meta itemprop="name" content="Eclipse Jetty Plugin" />
-			<meta name="description" content="The Eclipse Jetty Plugin enables running/debugging of Java web applications with Jetty in the Eclipse IDE. It supports Jetty 6-9 (has an own Jetty 8 included) and works well in conjunction with the m2e Maven integration." />
-			<meta itemprop="description" content="The Eclipse Jetty Plugin enables running/debugging of Java web applications with Jetty in the Eclipse IDE. It supports Jetty 6-9 (has an own Jetty 8 included) and works well in conjunction with the m2e Maven integration." />
+			<meta name="description" content="The Eclipse Jetty Plugin enables running/debugging of Java web applications with Jetty in the Eclipse IDE. It supports Jetty 7-11 (has an own Jetty 9.4 included) and works well in conjunction with the m2e Maven integration." />
+			<meta itemprop="description" content="The Eclipse Jetty Plugin enables running/debugging of Java web applications with Jetty in the Eclipse IDE. It supports Jetty 7-9 (has an own Jetty 9.4 included) and works well in conjunction with the m2e Maven integration." />
 			<meta name="og:image" content="http://eclipse-jetty.github.io/images/logo.png" />
 			<meta itemprop="image" content="http://eclipse-jetty.github.io/images/logo.png" />
 			<meta name="og:type" content="website" />

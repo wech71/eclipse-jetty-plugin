@@ -140,6 +140,22 @@ public class JettyConfigBuilder
 
         return this;
     }
+    
+    /**
+     * Begins a Call element
+     * 
+     * @param className the class name
+     * @param name the name of the method
+     * @return the builder itself;
+     */
+    public JettyConfigBuilder beginCallClass(String className, String name)
+    {
+        beginCall(name);
+
+        builder.attribute("class", className).attribute("name", name);
+
+        return this;
+    }
 
     /**
      * Begins a Call element

@@ -13,8 +13,6 @@ package net.sourceforge.eclipsejetty.jetty10;
 
 import java.util.Collection;
 
-import javax.xml.transform.OutputKeys;
-
 import net.sourceforge.eclipsejetty.jetty.JettyConfigBuilder;
 import net.sourceforge.eclipsejetty.jetty.JettyVersionType;
 import net.sourceforge.eclipsejetty.jetty9.Jetty9ServerConfiguration;
@@ -28,13 +26,22 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
         super();
     }
 
-    protected void buildBody(DOMBuilder domBuilder)
+    protected void buildBody(DOMBuilder builder)
     {
-    	super.buildBody(domBuilder);
-    	
-    	domBuilder.setDoctype("-//Jetty//Configure//EN", "https://www.eclipse.org/jetty/configure_10_0.dtd");
+    	super.buildBody(builder);    	
+    	builder.setDoctype("-//Jetty//Configure//EN", "https://www.eclipse.org/jetty/configure_10_0.dtd");
     }
 
+    @Override
+    protected void buildContent(JettyConfigBuilder builder)
+    {
+    	super.buildContent(builder);
+    	builder.beginCallClass("org.eclipse.jetty.webapp.WebAppContext", "addServerClasses")
+    		.argRef("Server")
+    		.argArray("org.eclipse.jetty.servlet", "org.eclipse.jetty");
+		builder.end();
+    }
+    
     /**
      * {@inheritDoc}
      * 
@@ -70,7 +77,7 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
             configurations.add("org.eclipse.jetty.webapp.WebXmlConfiguration");
             configurations.add("org.eclipse.jetty.webapp.MetaInfConfiguration");
             configurations.add("org.eclipse.jetty.webapp.FragmentConfiguration");
-            configurations.add("org.eclipse.jetty.plus.webapp.EnvConfiguration");
+            //configurations.add("org.eclipse.jetty.plus.webapp.EnvConfiguration");
             configurations.add("org.eclipse.jetty.plus.webapp.PlusConfiguration");
 
             if (isAnnoationConfigurationWorkaroundAllowed())
@@ -120,21 +127,5 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
         {
             return;
         }
-
-        /*
-        builder.comment("Annotations");
-
-        builder.beginCall(null, "org.eclipse.jetty.webapp.Configuration$ClassList", "setServerDefault");
-        {
-            builder.argRef("Server");
-            builder.beginCall("addBefore");
-            {
-                builder.arg("addBefore", "org.eclipse.jetty.webapp.JettyWebXmlConfiguration");
-                builder.argArray("org.eclipse.jetty.annotations.AnnotationConfiguration");
-            }
-            builder.end();
-        }
-        builder.end();
-        */
     }
 }

@@ -38,6 +38,9 @@ public class Jetty10LibStrategy extends Jetty94LibStrategy
         dependencies.add(".*/jetty-webapp-.*\\.jar");
         dependencies.add(".*/jetty-deploy-.*\\.jar");
         
+        // BasicAuthenticator
+        dependencies.add(".*/jetty-security-.*\\.jar");
+        
         //sl4j
         dependencies.add(".*/logging/slf4j-api-.*.jar");
         dependencies.add(".*/logging/jetty-slf4j-impl-.*.jar");
@@ -46,8 +49,15 @@ public class Jetty10LibStrategy extends Jetty94LibStrategy
     @Override
     protected void addJSPDependencies(Collection<String> dependencies)
     {
+    	//jsp.mod:
+    	//* servlet 
+    	//	addServerDependencies
+    	//* annotations
+    	addAnnotationsDependencies(dependencies);
+    	//* apache-jsp
         dependencies.add(".*/apache-jsp\\/.*\\.jar");
         dependencies.add(".*/apache-jstl\\/.*\\.jar");
+        dependencies.add(".*/org.mortbay.jasper.apache-jsp\\/.*\\.jar");
     }
 
     @Override
@@ -59,10 +69,8 @@ public class Jetty10LibStrategy extends Jetty94LibStrategy
     @Override
     protected void addJNDIDependencies(Collection<String> dependencies)
     {
-        dependencies.add(".*/mail/.*\\.jar");
+        //dependencies.add(".*/mail/.*\\.jar");
         dependencies.add(".*/jetty-jndi-.*\\.jar");
-        dependencies.add(".*/transactions/.*\\.jar");
-        dependencies.add(".*/jetty-plus-.*\\.jar");
     }
 
     @Override
@@ -70,6 +78,14 @@ public class Jetty10LibStrategy extends Jetty94LibStrategy
     {
         dependencies.add(".*/jetty-annotations-.*\\.jar");
         dependencies.add(".*/annotations/.*\\.jar");
+        addPlusDependencies(dependencies);
+    }
+    
+    void addPlusDependencies(Collection<String> dependencies)
+    {
+    	dependencies.add(".*/jetty-plus-.*\\.jar");
+    	dependencies.add(".*/jakarta.transaction-api-.*\\.jar");
+    	addJNDIDependencies(dependencies);
     }
 
     @Override

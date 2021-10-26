@@ -12,6 +12,7 @@
 package net.sourceforge.eclipsejetty.jetty10;
 
 import net.sourceforge.eclipsejetty.jetty9.Jetty9WebDefaults;
+import net.sourceforge.eclipsejetty.util.DOMBuilder;
 
 public class Jetty10WebDefaults extends Jetty9WebDefaults
 {
@@ -21,5 +22,15 @@ public class Jetty10WebDefaults extends Jetty9WebDefaults
         super();
         // TODO Auto-generated constructor stub
     }
+
+    /* {@inheritDoc}
+    * 
+    * @see net.sourceforge.eclipsejetty.jetty.AbstractWebDefaults#appendListeners(net.sourceforge.eclipsejetty.util.DOMBuilder)
+    */
+   @Override
+   protected void appendListeners(DOMBuilder builder)
+   {    
+	   //super.appendListeners(builder);
+   }
 
 }

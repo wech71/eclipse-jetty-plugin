@@ -517,6 +517,25 @@ public class JettyConfigBuilder
     }
 
     /**
+     * Adds a Set element
+     * 
+     * @param name the name
+     * @param value the value
+     * @return the builder itself
+     */
+    public JettyConfigBuilder setClass(String name, String className, Object value)
+    {
+        beginSet(name);
+        builder.attribute("class", className);
+        {
+            builder.text(value);
+        }
+        end();
+
+        return this;
+    }
+    
+    /**
      * Adds a Set element with an array
      * 
      * @param name the name

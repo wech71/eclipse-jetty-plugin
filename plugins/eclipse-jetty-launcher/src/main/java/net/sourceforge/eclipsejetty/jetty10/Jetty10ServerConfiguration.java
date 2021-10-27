@@ -36,10 +36,18 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
     protected void buildContent(JettyConfigBuilder builder)
     {
     	super.buildContent(builder);
-    	builder.beginCallClass("org.eclipse.jetty.webapp.WebAppContext", "addServerClasses")
-    		.argRef("Server")
-    		.argArray("org.eclipse.jetty.servlet", "org.eclipse.jetty");
+
+//    	builder.beginCallClass("org.eclipse.jetty.webapp.WebAppContext", "addServerClasses")
+//			.argRef("Server")
+//			.argArray("-org.eclipse.jetty");
+    	
 		builder.end();
+    }
+    
+    @Override
+    protected void buildDefaultHandlerSetters(JettyConfigBuilder builder)
+    {
+    	//builder.set("parentLoaderPriority", true);
     }
     
     /**
@@ -56,62 +64,27 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
     @Override
     protected void collectDefaultHandlerConfigurations(Collection<String> configurations)
     {
-        if (isAnnotationsEnabled())
+    	configurations.add("org.eclipse.jetty.webapp.WebInfConfiguration");
+		configurations.add("org.eclipse.jetty.webapp.WebXmlConfiguration");
+		configurations.add("org.eclipse.jetty.webapp.MetaInfConfiguration");
+		configurations.add("org.eclipse.jetty.webapp.FragmentConfiguration");		
+		configurations.add("org.eclipse.jetty.plus.webapp.EnvConfiguration");
+    	
+    	
+		//JNDI depends on Annotation support
+        if (isAnnotationsEnabled() || isJndiEnabled())
         {
-            configurations.add("org.eclipse.jetty.webapp.WebInfConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.WebXmlConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.MetaInfConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.FragmentConfiguration");
-
-            if (isAnnoationConfigurationWorkaroundAllowed())
-            {
-                configurations.add(getExtendedAnnotationConfigurationClassName());
-            }
-
-            configurations.add("org.eclipse.jetty.webapp.JettyWebXmlConfiguration");
+    		configurations.add("org.eclipse.jetty.plus.webapp.PlusConfiguration");
+    		configurations.add("org.eclipse.jetty.annotations.AnnotationConfiguration");
+    		configurations.add("org.eclipse.jetty.webapp.JettyWebXmlConfiguration");
+    		configurations.add("org.eclipse.jetty.webapp.WebAppConfiguration");
+    		configurations.add("org.eclipse.jetty.webapp.JspConfiguration");
         }
 
         if (isJndiEnabled())
         {
-            configurations.add("org.eclipse.jetty.webapp.WebInfConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.WebXmlConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.MetaInfConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.FragmentConfiguration");
-            //configurations.add("org.eclipse.jetty.plus.webapp.EnvConfiguration");
-            configurations.add("org.eclipse.jetty.plus.webapp.PlusConfiguration");
-
-            if (isAnnoationConfigurationWorkaroundAllowed())
-            {
-                configurations.add(getExtendedAnnotationConfigurationClassName());
-            }
-
-            configurations.add("org.eclipse.jetty.webapp.JettyWebXmlConfiguration");
-            configurations.add("org.eclipse.jetty.webapp.TagLibConfiguration");
+            configurations.add("org.eclipse.jetty.webapp.JndiConfiguration");
         }
-    }
-
-    protected String getExtendedAnnotationConfigurationClassName()
-    {
-        return "net.sourceforge.eclipsejetty.starter.jetty8.ExtendedAnnotationConfiguration";
-    }
-
-    protected boolean isAnnoationConfigurationWorkaroundAllowed()
-    {
-        if ((getMinorVersion() == null) || (getMicroVersion() == null))
-        {
-            return false;
-        }
-
-        if (getMinorVersion().intValue() > 1)
-        {
-            return true;
-        }
-       
-        if (getMinorVersion().intValue() == 1) {
-            return (getMicroVersion().intValue() >= 8);
-        }
-        
-        return false;
     }
     
 
@@ -127,5 +100,24 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
         {
             return;
         }
+
+        builder.comment("Annotations");
+
+        //don't call super method: jetty 10 does no longer have org.eclipse.jetty.webapp.Configuration$ClassList and does not need append
+    	//super.buildAnnotations(builder);
+    }
+    
+    @Override
+    protected void buildJNDI(JettyConfigBuilder builder)
+    {
+        if (!isAnnotationsEnabled())
+        {
+            return;
+        }
+
+        builder.comment("JNDI");
+
+        //don't call super method: jetty 10 does no longer have org.eclipse.jetty.webapp.Configuration$ClassList and does not need append
+        //super.buildJNDI(builder);
     }
 }

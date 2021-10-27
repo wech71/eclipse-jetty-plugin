@@ -214,7 +214,7 @@ public class JettyLaunchConfigurationDelegate extends JavaLaunchDelegate
     public String getVMArguments(ILaunchConfiguration configuration) throws CoreException
     {
         JettyLaunchConfigurationAdapter adapter = JettyLaunchConfigurationAdapter.getInstance(configuration);
-        File defaultFile = createJettyConfigurationFile(adapter, false);
+        File defaultFile = createJettyConfigurationFile(adapter, true);
         String vmArguments = super.getVMArguments(configuration);
 
         vmArguments += String.format(" -D%s=%s", CONFIGURATION_KEY, getConfigurationParameter(adapter, defaultFile)); //$NON-NLS-1$

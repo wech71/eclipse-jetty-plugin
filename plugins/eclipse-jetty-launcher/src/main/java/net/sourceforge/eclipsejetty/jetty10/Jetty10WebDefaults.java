@@ -30,7 +30,7 @@ public class Jetty10WebDefaults extends Jetty9WebDefaults
    @Override
    protected void appendListeners(DOMBuilder builder)
    {    
-	   //super.appendListeners(builder);
+	   super.appendListeners(builder);
    }
 
 }

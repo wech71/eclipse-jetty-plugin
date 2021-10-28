@@ -47,6 +47,7 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
     @Override
     protected void buildDefaultHandlerSetters(JettyConfigBuilder builder)
     {
+    	super.buildDefaultHandlerSetters(builder);
     	//builder.set("parentLoaderPriority", true);
     }
     

@@ -51,6 +51,56 @@ public class Jetty10ServerConfiguration extends Jetty9ServerConfiguration
     	//builder.set("parentLoaderPriority", true);
     }
     
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see net.sourceforge.eclipsejetty.jetty7.Jetty7ServerConfiguration#buildHttpConfig(net.sourceforge.eclipsejetty.jetty.JettyConfigBuilder)
+     */
+    @Override
+    protected void buildHttpConfig(JettyConfigBuilder builder)
+    {
+        if (getPort() == null)
+        {
+            return;
+        }
+
+        builder.comment("HTTP Config");
+
+        builder.beginNew("httpConfig", "org.eclipse.jetty.server.HttpConfiguration");
+        {
+            builder.set("secureScheme", "https");
+
+            if (getSslPort() != null)
+            {
+                builder.set("securePort", getSslPort());
+            }
+
+            builder.set("outputBufferSize", 32768);
+            builder.set("requestHeaderSize", 8192);
+            builder.set("responseHeaderSize", 8192);
+            builder.set("sendServerVersion", true);
+            builder.set("sendDateHeader", false);
+            builder.set("headerCacheSize", 512);
+            
+            String uriCompliance = System.getProperty("jetty.httpConfig.uriCompliance");
+            if (uriCompliance == null)
+            	uriCompliance = "LEGACY";
+                        
+            builder.beginSet("uriCompliance");
+            {
+            	 builder.beginCallClass("org.eclipse.jetty.http.UriCompliance", "from");
+                 {
+                	 builder.arg(uriCompliance);
+                 }
+                 builder.end();
+            }
+            builder.end();
+        }
+        builder.end();
+    }
+
+    
     /**
      * {@inheritDoc}
      * 

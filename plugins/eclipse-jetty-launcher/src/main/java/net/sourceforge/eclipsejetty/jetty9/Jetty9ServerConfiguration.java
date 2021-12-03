@@ -93,20 +93,6 @@ public class Jetty9ServerConfiguration extends Jetty8ServerConfiguration
             builder.set("sendServerVersion", true);
             builder.set("sendDateHeader", false);
             builder.set("headerCacheSize", 512);
-            
-            String uriCompliance = System.getProperty("jetty.httpConfig.uriCompliance");
-            if (uriCompliance == null)
-            	uriCompliance = "LEGACY";
-                        
-            builder.beginSet("uriCompliance");
-            {
-            	 builder.beginCallClass("org.eclipse.jetty.http.UriCompliance", "from");
-                 {
-                	 builder.arg(uriCompliance);
-                 }
-                 builder.end();
-            }
-            builder.end();
         }
         builder.end();
     }

@@ -55,9 +55,7 @@ public class Jetty10LibStrategy extends Jetty94LibStrategy
     	//* annotations
     	addAnnotationsDependencies(dependencies);
     	//* apache-jsp
-        dependencies.add(".*/apache-jsp\\/.*\\.jar");
-        dependencies.add(".*/apache-jstl\\/.*\\.jar");
-        dependencies.add(".*/org.mortbay.jasper.apache-jsp\\/.*\\.jar");
+        dependencies.add(".*/apache-jsp/.*\\.jar");
     }
 
     @Override
